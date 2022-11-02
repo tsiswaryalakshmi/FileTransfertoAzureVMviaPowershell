@@ -1,0 +1,22 @@
+name: "Transfer File to Azure VM" 
+on:
+  workflow_dispatch:
+jobs: 
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main		  
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: 'Transfer File'
+      uses: kheiakiyama/install-azcopy-action@v1
+    - name: 'Copy from Azure Storage to AzureVM'
+      run:   
+        azcopy cp "https://demostoragepowershell.blob.core.windows.net/storagemodule/testPowershell.txt?sp=r&st=2022-10-27T10:43:41Z&se=2022-10-27T18:43:41Z&spr=https&sv=2021-06-08&sr=b&sig=mmfJH5e0CBKmbMmuhcrB0v3uktVd2xuDY71D0y9lNZU%3D" "c:\test" --recursive=true       # az vm upload --resource-group 'Sandbox' --name 'powershell' --from np++.ps1 --to C:\       
+    #- name: 'VM Machine'
+    #  run:   
+    #    az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts  "@np++.ps1" 
+       # az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts  @C:\\Users\\powershell\\np++.ps1 
