@@ -19,4 +19,4 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
       - name: 'VM Machine and execute extract zip'
         run:   
-          az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts 'Expand-Archive -Path C:\Users\powershell\Desktop\sampleRepo-main.zip -DestinationPath C:\Users\powershell\Desktop\' 
+          az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts 'Expand-Archive -Path C:\Users\powershell\Desktop\npp.8.4.2.Installer.x64.zip -DestinationPath C:\Users\powershell\Desktop\' 
