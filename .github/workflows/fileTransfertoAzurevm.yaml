@@ -1,0 +1,22 @@
+name: fileTransfertoAzureVMfromGithubRunner
+on: 
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+      - name: Check out repo        
+        uses: actions/checkout@v2
+      - name: Set Env in Github Runner
+        shell: pwsh
+        run: ./script1.ps1
+      - name: Connect to Azure Vm and Copy file
+        shell: pwsh
+        run: ./script2.ps1       
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: 'VM Machine and execute extract zip'
+        run:   
+          az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts 'Expand-Archive -Path C:\Users\powershell\Desktop\sampleRepo-main.zip -DestinationPath C:\Users\powershell\Desktop\' 
