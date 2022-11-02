@@ -1,0 +1,17 @@
+name: "Azure VM" 
+on:
+  workflow_dispatch:
+jobs: 
+  build-and-deploy:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main		  
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: 'VM Machine'
+      run:   
+        az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts  "@fileforTransfer.ps1" 
+       # az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts  @C:\\Users\\powershell\\np++.ps1 
