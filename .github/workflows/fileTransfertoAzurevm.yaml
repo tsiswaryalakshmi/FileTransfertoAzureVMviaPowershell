@@ -17,9 +17,9 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: 'VM Machine and execute extract zip'
-        run:   
-          az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts 'Expand-Archive -Path C:\Users\powershell\Desktop\npp.8.4.2.Installer.x64.zip -DestinationPath C:\Users\powershell\Desktop\' 
+      #- name: 'VM Machine and execute extract zip'
+      #  run:   
+      #    az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts 'Expand-Archive -Path C:\Users\powershell\Desktop\npp.8.4.2.Installer.x64.zip -DestinationPath C:\Users\powershell\Desktop\' 
       - name: 'Running exe file in Workflow'
         run:   
           az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts '@C:\Users\powershell\Desktop\NotepadSoftware\np++.ps1' 
