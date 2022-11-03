@@ -20,3 +20,6 @@ jobs:
       - name: 'VM Machine and execute extract zip'
         run:   
           az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts 'Expand-Archive -Path C:\Users\powershell\Desktop\npp.8.4.2.Installer.x64.zip -DestinationPath C:\Users\powershell\Desktop\' 
+      - name: 'Running exe file in Workflow'
+        run:   
+          az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts 'Start-Process C:\Users\powershell\Desktop\npp.8.2.1.Installer.exe /S -NoNewWindow -Wait -PassThru' 
