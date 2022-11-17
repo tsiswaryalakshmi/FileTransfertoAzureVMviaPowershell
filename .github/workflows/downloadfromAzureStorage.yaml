@@ -16,7 +16,7 @@ jobs:
     - name: 'Copy from Azure Storage to AzureVM'
       run:   
         #azcopy cp "https://demostoragepowershell.blob.core.windows.net/storagemodule/testPowershell.txt?sp=r&st=2022-10-27T10:43:41Z&se=2022-10-27T18:43:41Z&spr=https&sv=2021-06-08&sr=b&sig=mmfJH5e0CBKmbMmuhcrB0v3uktVd2xuDY71D0y9lNZU%3D" "c:\test" --recursive=true       # az vm upload --resource-group 'Sandbox' --name 'powershell' --from np++.ps1 --to C:\       
-        azcopy cp "https://demostoragepowershell.blob.core.windows.net/storagemodule?sp=racwdli&st=2022-11-17T11:15:44Z&se=2022-11-17T19:15:44Z&spr=https&sv=2021-06-08&sr=c&sig=5XadnTBA%2BsWQ1pHdcUEHNlQk4BWk8dCtI1tIpq0iYqw%3D" "c:\test" --recursive=true  
+        azcopy cp "https://testpowershellnov.blob.core.windows.net/mytestnovcontainer?sp=rw&st=2022-11-17T11:58:15Z&se=2022-11-17T19:58:15Z&spr=https&sv=2021-06-08&sr=c&sig=DQoh9jUr%2FTXLF5vQD34UAMIRsH1n5vjGwz%2BARP3JlNc%3D" "c:\test" --recursive=true  
     #- name: 'VM Machine'
     #  run:   
     #    az vm run-command invoke --resource-group 'Sandbox' --name 'powershell' --command-id 'RunPowerShellScript' --scripts  "@np++.ps1" 
